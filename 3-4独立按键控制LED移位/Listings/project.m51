@@ -1,0 +1,130 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/18/2023  21:56:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+D:\KEIL5\C51\BIN\BL51.EXE .\Objects\main.obj TO .\Objects\project PRINT (.\Listings\project.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\main.obj (MAIN)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_STARTUP)
+  D:\KEIL5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         ?DT?MAIN
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     0054H     UNIT         ?PR?MAIN?MAIN
+            CODE    08E0H     0018H     UNIT         ?PR?_DELAY?MAIN
+            CODE    08F8H     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:0008H         PUBLIC        LEDNum
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/18/2023  21:56:10  PAGE 2
+
+
+  B:00B0H.0       PUBLIC        P3_0
+  B:00B0H.1       PUBLIC        P3_1
+  C:088CH         PUBLIC        main
+  C:08E4H         PUBLIC        _Delay
+  C:08E0H         SYMBOL        L?0027
+  -------         PROC          L?0026
+  -------         ENDPROC       L?0026
+  C:08E0H         SYMBOL        L?0027
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        n
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:08E4H         LINE#         5
+  C:08E4H         LINE#         6
+  C:08E4H         LINE#         8
+  C:08E8H         LINE#         9
+  C:08E8H         LINE#         10
+  C:08EAH         LINE#         11
+  C:08ECH         LINE#         13
+  C:08ECH         LINE#         14
+  C:08EEH         LINE#         15
+  C:08F0H         LINE#         16
+  C:08F5H         LINE#         17
+  C:08F7H         LINE#         18
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  C:088CH         LINE#         21
+  C:088CH         LINE#         22
+  C:088CH         LINE#         23
+  C:088FH         LINE#         24
+  C:088FH         LINE#         25
+  C:088FH         LINE#         26
+  C:0892H         LINE#         27
+  C:0892H         LINE#         28
+  C:0895H         LINE#         29
+  C:0898H         LINE#         30
+  C:089BH         LINE#         31
+  C:089DH         LINE#         32
+  C:08A4H         LINE#         33
+  C:08A7H         LINE#         34
+  C:08B7H         LINE#         35
+  C:08B7H         LINE#         36
+  C:08BAH         LINE#         37
+  C:08BAH         LINE#         38
+  C:08BDH         LINE#         39
+  C:08C0H         LINE#         40
+  C:08C3H         LINE#         41
+  C:08C7H         LINE#         42
+  C:08CCH         LINE#         44
+  C:08CEH         LINE#         47
+  C:08DEH         LINE#         48
+  C:08DEH         LINE#         49
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/18/2023  21:56:10  PAGE 3
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 006FH BYTE ( 5%) *
+******************************************************************************
+
+Program Size: data=10.0 xdata=0 code=255
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
