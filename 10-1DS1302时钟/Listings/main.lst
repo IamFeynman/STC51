@@ -1,0 +1,62 @@
+C51 COMPILER V9.54   MAIN                                                                  06/23/2023 12:37:52 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main.l
+                    -st) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "LCD1602.h"
+   3          #include "DS1302.h"
+   4          #include "Delay.h"
+   5          #include "Key.h"
+*** WARNING C318 IN LINE 5 OF main.c: can't open file 'Key.h'
+   6          
+   7          unsigned char second,minute,hour;
+   8          
+   9          void main()
+  10          {
+  11   1        LCD_Init();
+  12   1        DS1302_Init();
+  13   1        //DS1302_WriteByte(0x8E,0x00);//解除芯片写入保护
+  14   1        LCD_ShowString(1,1,"  -  -");
+  15   1        LCD_ShowString(2,1,"  :  :");
+  16   1        LCD_ShowString(2,11,"DAY:");
+  17   1        DS1302_SetTime();
+  18   1        
+  19   1        
+  20   1        while(1)
+  21   1        {
+  22   2          DS1302_ReadTime();
+  23   2          LCD_ShowNum(1,1,DS1302_Time[0],2);
+  24   2          LCD_ShowNum(1,4,DS1302_Time[1],2);
+  25   2          LCD_ShowNum(1,7,DS1302_Time[2],2);
+  26   2          LCD_ShowNum(2,1,DS1302_Time[3],2);
+  27   2          LCD_ShowNum(2,4,DS1302_Time[4],2);
+  28   2          LCD_ShowNum(2,7,DS1302_Time[5],2);
+  29   2          LCD_ShowNum(2,15,DS1302_Time[6],2);
+  30   2      
+  31   2          
+  32   2          
+  33   2          
+  34   2        }
+  35   1        
+  36   1        
+  37   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    158    ----
+   CONSTANT SIZE    =     19    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
