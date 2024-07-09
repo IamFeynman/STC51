@@ -1,0 +1,80 @@
+C51 COMPILER V9.54   MATRIXLED                                                             06/22/2023 17:18:07 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MATRIXLED
+OBJECT MODULE PLACED IN .\Objects\MatrixLED.obj
+COMPILER INVOKED BY: D:\keil5\C51\BIN\C51.EXE MatrixLED.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\M
+                    -atrixLED.lst) TABS(2) OBJECT(.\Objects\MatrixLED.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "Delay.h"
+   3          
+   4          
+   5          sbit RCK=P3^5;//其实是RCLK
+   6          sbit SCK=P3^6;//SRCLK
+   7          sbit SER=P3^4;//SER
+   8          
+   9          #define MATRIX_LED_PORT  P0
+  10          
+  11          /**
+  12            * @brief 74HC595 写入一个字节
+  13            * @param 要写入的字节
+  14            * @retval 无
+  15            */
+  16          void _74HC595_WriteByte(unsigned char Byte)
+  17          {
+  18   1        unsigned char i;
+  19   1        for(i=0;i<8;i++)
+  20   1        {
+  21   2          SER=Byte&(0x80>>i);
+  22   2          SCK=1;
+  23   2          SCK=0;
+  24   2        }
+  25   1        RCK=1;
+  26   1        RCK=0;
+  27   1      
+  28   1      }
+  29          /**
+  30            * @brief  点阵屏初始化
+  31            * @param 无
+  32            * @retval 无
+  33            */
+  34          
+  35          void MatrixLED_Init()
+  36          {
+  37   1        SCK=0;
+  38   1        RCK=0;
+  39   1      }
+  40          /**
+  41            * @briefLED点阵屏显示一列数据  
+  42            * @param Column 要选择的列，范围0~7,0在最左边
+  43            * @param Data选择列显示的数据，高位在上，1为亮，0为灭
+  44            * @retval 无
+  45            */
+  46          
+  47          void MatrixLED_ShowColumn(unsigned char Column,Data)
+  48          {
+  49   1        _74HC595_WriteByte(Data);
+  50   1        MATRIX_LED_PORT=~(0x80>>Column);
+  51   1        Delay(1);
+  52   1        MATRIX_LED_PORT=0xFF;
+  53   1      
+  54   1      }
+C51 COMPILER V9.54   MATRIXLED                                                             06/22/2023 17:18:07 PAGE 2   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     84    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
